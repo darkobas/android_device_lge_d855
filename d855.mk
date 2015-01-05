@@ -18,6 +18,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+$(call inherit-product, device/lge/d855/full_d855.mk)
+
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/lge/d855/d855-vendor.mk)
 
@@ -51,6 +53,13 @@ PRODUCT_COPY_FILES += \
     device/lge/g3-common/wcnss/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     device/lge/g3-common/wcnss/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/lge/g3-common/wcnss/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_DEVICE="g3" \
+    PRODUCT_NAME="g3_global_com" \
+    BUILD_FINGERPRINT="lge/g3_global_com/g3:5.0/LRX21R.A1417604035/1417604035:user/release-keys" \
+    PRIVATE_BUILD_DESC="g3_global_com-user 5.0 LRX21R.A1417604035 1417604035 release-keys"
 
 # common g3
 $(call inherit-product, device/lge/g3-common/g3.mk)

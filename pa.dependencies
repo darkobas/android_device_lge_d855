@@ -1,9 +1,9 @@
 [
  {
    "remote":      "github",
-   "repository":  "bryan2894/proprietary_vendor_lge",
+   "repository":  "TheMuppets/proprietary_vendor_lge",
    "target_path": "vendor/lge",
-   "revision":    "lollipop"
+   "revision":    "cm-12.0"
  },
  {
    "remote":      "github",
