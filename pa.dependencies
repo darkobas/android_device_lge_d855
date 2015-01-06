@@ -1,0 +1,26 @@
+[
+ {
+   "remote":      "github",
+   "repository":  "bryan2894/proprietary_vendor_lge",
+   "target_path": "vendor/lge",
+   "revision":    "lollipop"
+ },
+ {
+   "remote":      "github",
+   "repository":  "darkobas/android_device_lge_g3-common",
+   "target_path": "device/lge/g3-common",
+   "revision":    "L"
+ },
+ {
+   "remote":      "github",
+   "repository":  "darkobas/android_kernel_lge_g3",
+   "target_path": "kernel/lge/g3",
+   "revision":    "L"
+ },
+ {
+   "remote":      "cm",
+   "repository":  "CyanogenMod/android_device_qcom_common",
+   "target_path": "device/qcom/common",
+   "revision":    "cm-12.0"
+ }
+]
