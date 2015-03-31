@@ -1,1 +1,1 @@
-add_lunch_combo psd_d855-userdebug
+add_lunch_combo dud_d855-userdebug

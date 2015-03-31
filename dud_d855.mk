@@ -14,18 +14,24 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+# Get the prebuilt list of APNs
+$(call inherit-product, vendor/dud/configs/gsm.mk)
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-$(call inherit-product, device/lge/d855/full_d855.mk)
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/dud/vendor.mk)
+$(call inherit-product, vendor/dud/configs/common.mk)
 
-# Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/lge/d855/d855-vendor.mk)
+$(call inherit-product, device/lge/d855/device.mk)
 
-# Audio
-PRODUCT_COPY_FILES += \
-    device/lge/g3-common/configs/mixer_paths_qcwcn.xml:system/etc/mixer_paths.xml
+PRODUCT_DEVICE := d855
+PRODUCT_NAME := full_d855
+PRODUCT_BRAND := lge
+PRODUCT_MODEL := LG-D855
+PRODUCT_MANUFACTURER := LGE
+
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -45,21 +51,9 @@ PRODUCT_PACKAGES += \
     libwcnss_qmi \
     wcnss_service
 
-PRODUCT_COPY_FILES += \
-    device/lge/g3-common/wcnss/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    device/lge/g3-common/wcnss/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/lge/g3-common/wcnss/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
-    device/lge/g3-common/wcnss/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    device/lge/g3-common/wcnss/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    device/lge/g3-common/wcnss/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/lge/g3-common/wcnss/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
-
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="g3" \
     PRODUCT_NAME="d855" \
     BUILD_FINGERPRINT="lge/g3_global_com/g3:5.0/LRX21R.A1419207951/1419207951:user/release-keys" \
     PRIVATE_BUILD_DESC="g3_global_com-user 5.0 LRX21R.A1419207951 1419207951 release-keys" 
 
-# common g3
-$(call inherit-product, device/lge/g3-common/g3.mk)
